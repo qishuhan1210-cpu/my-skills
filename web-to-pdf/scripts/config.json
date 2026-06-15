@@ -1,0 +1,25 @@
+{
+  "defaults": {
+    "margins": { "top": "1.2cm", "right": "1.4cm", "bottom": "1.8cm", "left": "1.4cm" },
+    "removeSelectors": [
+      "header", "footer", "nav",
+      "[class*='sidebar']", "[class*='side-bar']",
+      "[id*='sidebar']", "[id*='header']", "[id*='footer']",
+      "[class*='breadcrumb']", "[class*='navigation']",
+      "[class*='banner']", "[class*='advertisement']",
+      ".ads", "#ads", "[class*='ad-']",
+      "[class*='cookie']", "[class*='popup']", "[class*='modal']"
+    ]
+  },
+  "sites": {
+    "help.fanruan.com": {
+      "removeSelectors": [
+        ".side-nav", ".doc-sidebar", ".sidebar-wrap",
+        ".header-wrap", ".footer-wrap", ".breadcrumb-wrap",
+        "#side-nav", ".doc-navigation", ".doc-nav",
+        ".feedback-wrap", ".page-nav", ".version-tip"
+      ],
+      "waitFor": ".doc-content"
+    }
+  }
+}

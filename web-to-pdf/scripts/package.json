@@ -1,0 +1,12 @@
+{
+  "name": "web-to-pdf",
+  "version": "1.0.0",
+  "description": "Convert web pages to print-friendly A4 PDFs",
+  "type": "module",
+  "bin": {
+    "web-to-pdf": "./index.js"
+  },
+  "dependencies": {
+    "playwright": "^1.45.0"
+  }
+}

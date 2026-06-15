@@ -1,0 +1,251 @@
+/* =============================================
+   Print-Clean: A4 技术文档打印样式
+   用法: percollate pdf --style print-clean.css --output out.pdf URL
+   ============================================= */
+
+:root {
+  --body-font: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'helvetica neue', helvetica, arial, sans-serif;
+  --code-font: 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  --text-color: #1a1a1a;
+  --muted-color: #555;
+  --border-color: #d0d0d0;
+  --header-bg: #f5f5f5;
+  --accent: #2563eb;
+  --base-size: 9pt;
+}
+
+/* ---- 页面设置 ---- */
+@page {
+  size: A4 portrait;
+  margin: 1.2cm 1.4cm 1.8cm;
+}
+
+/* ---- 基础 ---- */
+html {
+  font-size: var(--base-size);
+  line-height: 1.55;
+  font-family: var(--body-font);
+  color: var(--text-color);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---- 文章标题区 ---- */
+.article__title {
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0 0 0.3em;
+  color: var(--text-color);
+  border-bottom: 2pt solid var(--text-color);
+  padding-bottom: 0.3em;
+}
+
+.article__url {
+  font-size: 0.8em;
+  color: var(--muted-color);
+  font-style: normal;
+  word-break: break-all;
+}
+
+.article__byline,
+.article__time {
+  font-size: 0.8em;
+  color: var(--muted-color);
+  font-style: normal;
+}
+
+/* ---- 标题层级 ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--body-font);
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 1.2em 0 0.4em;
+  page-break-after: avoid;
+  page-break-inside: avoid;
+  line-height: 1.3;
+}
+
+h1 { font-size: 1.5em; }
+h2 {
+  font-size: 1.25em;
+  border-bottom: 0.5pt solid var(--border-color);
+  padding-bottom: 0.2em;
+}
+h3 { font-size: 1.1em; }
+h4 { font-size: 1em; font-weight: 600; }
+h5, h6 { font-size: 0.95em; font-weight: 600; color: var(--muted-color); }
+
+h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
+  content: '';
+  display: block;
+  height: 3rem;
+  margin-bottom: -3rem;
+}
+
+/* ---- 段落 ---- */
+.article__content p {
+  margin: 0.5em 0;
+  orphans: 3;
+  widows: 3;
+}
+
+/* 技术文档禁止连字符断字，避免 API 名/路径被错误切断 */
+.article__content {
+  hyphens: none;
+}
+
+/* 取消首行缩进，改用段间距（技术文档更合适） */
+.article__content p + p {
+  text-indent: 0;
+  margin-top: 0.5em;
+}
+
+/* ---- 链接：不显示 URL，只保留下划线 ---- */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.type--pdf a:not(.no-href)::after {
+  display: none;
+  content: none;
+}
+
+/* ---- 表格：重点优化 ---- */
+.article__content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78em;
+  line-height: 1.38;
+  margin: 0.8em 0;
+  page-break-inside: auto;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+
+.article__content th {
+  background-color: var(--header-bg);
+  font-weight: 600;
+  border: 0.5pt solid var(--border-color);
+  padding: 2pt 5pt;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+  hyphens: none;
+  max-width: 35%;            /* 任意列最多占 35%，防止说明列独占 */
+}
+
+.article__content td {
+  border: 0.5pt solid var(--border-color);
+  padding: 2pt 5pt;
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  hyphens: none;
+  max-width: 35%;
+}
+
+.article__content tr:nth-child(even) td {
+  background-color: #fafafa;
+}
+
+.article__content tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+/* ---- 代码 ---- */
+.article__content code {
+  font-family: var(--code-font);
+  font-size: 0.82em;
+  background: #f4f4f4;
+  padding: 0.1em 0.35em;
+  border-radius: 2pt;
+  border: 0.3pt solid #e0e0e0;
+}
+
+.article__content pre {
+  background: #f7f7f7;
+  border: 0.5pt solid var(--border-color);
+  border-left: 3pt solid #999;
+  padding: 6pt 8pt;
+  font-size: 0.8em;
+  font-family: var(--code-font);
+  text-align: left;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  page-break-inside: avoid;
+}
+
+.article__content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* ---- 列表 ---- */
+.article__content ul,
+.article__content ol {
+  padding-left: 1.6em;
+  margin: 0.4em 0;
+}
+
+.article__content li {
+  margin: 0.15em 0;
+}
+
+/* ---- 引用块 ---- */
+.article__content blockquote {
+  margin: 0.8em 0;
+  padding: 0.4em 0.8em;
+  border-left: 3pt solid #bbb;
+  background: #f9f9f9;
+  font-size: 0.92em;
+  color: var(--muted-color);
+}
+
+/* ---- 分割线 ---- */
+.article__content hr {
+  border: none;
+  border-top: 0.5pt solid var(--border-color);
+  margin: 1em 0;
+}
+
+/* ---- 图片 ---- */
+.article__content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5em auto;
+}
+
+.article__content figure {
+  margin: 1em 0;
+  text-align: center;
+}
+
+/* 代码块/引用块在 figure 内时强制左对齐 */
+.article__content figure pre,
+.article__content figure blockquote {
+  text-align: left;
+}
+
+.article__content figcaption {
+  font-size: 0.8em;
+  color: var(--muted-color);
+  margin-top: 0.3em;
+}
+
+/* ---- 页脚（Percollate footer template 样式备用） ---- */
+.footer-template {
+  font-size: 8pt;
+  color: #888;
+  font-family: var(--body-font);
+  text-align: center;
+  width: 100%;
+}

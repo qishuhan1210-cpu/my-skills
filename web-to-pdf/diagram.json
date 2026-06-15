@@ -1,0 +1,350 @@
+{
+  "version": 2,
+  "nodes": [
+    {
+      "type": "frame",
+      "id": "root",
+      "x": 20, "y": 20,
+      "width": "fit-content", "height": "fit-content",
+      "layout": "vertical",
+      "gap": 32,
+      "padding": 40,
+      "fillColor": "#F8FAFC",
+      "borderColor": "#CBD5E1",
+      "borderWidth": 2,
+      "borderRadius": 16,
+      "children": [
+        {
+          "type": "text",
+          "text": "web-to-pdf：网页 → 可打印 A4 PDF",
+          "fontSize": 26,
+          "textColor": "#1E293B",
+          "width": 900,
+          "height": "fit-content",
+          "textAlign": "center"
+        },
+        {
+          "type": "frame",
+          "id": "flow_row",
+          "width": "fit-content", "height": "fit-content",
+          "layout": "horizontal",
+          "gap": 0,
+          "padding": 0,
+          "children": [
+            {
+              "type": "frame",
+              "id": "col_trigger",
+              "width": 200, "height": "fit-content",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [20, 16],
+              "fillColor": "#F0F4FC",
+              "borderColor": "#5178C6",
+              "borderWidth": 2,
+              "borderRadius": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "👤 用户触发",
+                  "fontSize": 16,
+                  "textColor": "#5178C6",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "rect",
+                  "id": "input_url",
+                  "width": "fill-container", "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#5178C6",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "🌐 网页 URL",
+                  "fontSize": 14,
+                  "textColor": "#1E293B",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "rect",
+                  "id": "input_md",
+                  "width": "fill-container", "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#5178C6",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "📄 本地 .md 文件",
+                  "fontSize": 14,
+                  "textColor": "#1E293B",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "text",
+                  "text": "「把这个打印/转成PDF」",
+                  "fontSize": 13,
+                  "textColor": "#94A3B8",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "textAlign": "center"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "arrow_1",
+              "width": 60, "height": 180,
+              "layout": "none",
+              "gap": 0,
+              "padding": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "→",
+                  "fontSize": 32,
+                  "textColor": "#94A3B8",
+                  "x": 10, "y": 70,
+                  "width": 40,
+                  "height": "fit-content"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "col_toolchain",
+              "width": 220, "height": "fit-content",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [20, 16],
+              "fillColor": "#EAE2FE",
+              "borderColor": "#8569CB",
+              "borderWidth": 2,
+              "borderRadius": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "⚙️ 工具链处理",
+                  "fontSize": 16,
+                  "textColor": "#8569CB",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "rect",
+                  "id": "tool_marked",
+                  "width": "fill-container", "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#8569CB",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "marked\n（.md → HTML）",
+                  "fontSize": 13,
+                  "textColor": "#1E293B",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "rect",
+                  "id": "tool_readability",
+                  "width": "fill-container", "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#8569CB",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "Mozilla Readability\n（提取正文）",
+                  "fontSize": 13,
+                  "textColor": "#1E293B",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "rect",
+                  "id": "tool_percollate",
+                  "width": "fill-container", "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#8569CB",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "percollate + Chrome\n（无头渲染）",
+                  "fontSize": 13,
+                  "textColor": "#1E293B",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "rect",
+                  "id": "tool_css",
+                  "width": "fill-container", "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#8569CB",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "print-clean.css\n（A4 排版样式）",
+                  "fontSize": 13,
+                  "textColor": "#1E293B",
+                  "textAlign": "center"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "arrow_2",
+              "width": 60, "height": 180,
+              "layout": "none",
+              "gap": 0,
+              "padding": 0,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "→",
+                  "fontSize": 32,
+                  "textColor": "#94A3B8",
+                  "x": 10, "y": 70,
+                  "width": 40,
+                  "height": "fit-content"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "col_output",
+              "width": 200, "height": "fit-content",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [20, 16],
+              "fillColor": "#DFF5E5",
+              "borderColor": "#509863",
+              "borderWidth": 2,
+              "borderRadius": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "📄 输出",
+                  "fontSize": 16,
+                  "textColor": "#509863",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "rect",
+                  "id": "output_pdf",
+                  "width": "fill-container", "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#509863",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "干净 A4 PDF\n✅ 无导航栏\n✅ 无广告\n✅ 字号适中",
+                  "fontSize": 14,
+                  "textColor": "#1E293B",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "text",
+                  "text": "📖 纸质阅读\n✍️ 手写标注",
+                  "fontSize": 13,
+                  "textColor": "#509863",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "textAlign": "center"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pain_vs_solution",
+          "width": 900, "height": "fit-content",
+          "layout": "horizontal",
+          "gap": 24,
+          "padding": [20, 16],
+          "fillColor": "#FEF1CE",
+          "borderColor": "#D4B45B",
+          "borderWidth": 2,
+          "borderRadius": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "pain_col",
+              "width": "fill-container", "height": "fit-content",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [12, 12],
+              "fillColor": "#FEE3E2",
+              "borderColor": "#D25D5A",
+              "borderWidth": 2,
+              "borderRadius": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "😫 痛点：直接打印网页",
+                  "fontSize": 15,
+                  "textColor": "#D25D5A",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "text",
+                  "text": "• 侧边栏/导航占半屏\n• 广告污染正文\n• 表格乱排超出A4\n• 字号太小或太大\n• 背景色浪费墨水",
+                  "fontSize": 13,
+                  "textColor": "#7F1D1D",
+                  "width": "fill-container",
+                  "height": "fit-content"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vs_col",
+              "width": 40, "height": "fit-content",
+              "layout": "vertical",
+              "gap": 0,
+              "padding": [20, 4],
+              "children": [
+                {
+                  "type": "text",
+                  "text": "VS",
+                  "fontSize": 18,
+                  "textColor": "#D4B45B",
+                  "width": 40,
+                  "height": "fit-content",
+                  "textAlign": "center"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "solution_col",
+              "width": "fill-container", "height": "fit-content",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [12, 12],
+              "fillColor": "#DFF5E5",
+              "borderColor": "#509863",
+              "borderWidth": 2,
+              "borderRadius": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "✅ web-to-pdf 解决后",
+                  "fontSize": 15,
+                  "textColor": "#509863",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "textAlign": "center"
+                },
+                {
+                  "type": "text",
+                  "text": "• 仅保留正文内容\n• 自动去除噪声元素\n• 表格列宽自适应A4\n• 字号/行距适合阅读\n• 白底，省墨打印",
+                  "fontSize": 13,
+                  "textColor": "#14532D",
+                  "width": "fill-container",
+                  "height": "fit-content"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
